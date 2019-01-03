@@ -1,0 +1,8 @@
+tests/unit/__pycache__
+htmlcov
+.coverage
+*pyc
+build
+dist
+*.egg-info/
+.eggs
