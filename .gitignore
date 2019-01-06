@@ -1,3 +1,5 @@
+.cache
+pylint.out
 tests/unit/__pycache__
 htmlcov
 .coverage
