@@ -157,7 +157,7 @@ class LintCommand(setuptools.Command):
 def setup(**kwargs):
     """Replacement for `setuptools.setup()`."""
 
-    kwargs.setdefault('tests_require', ['pytest','pylint'])
+    kwargs.setdefault('tests_require', ['pytest'])
     cmdclass = kwargs.get('cmdclass', {})
     cmdclass.setdefault('test', PyTest)
     cmdclass.setdefault('lint', LintCommand)
