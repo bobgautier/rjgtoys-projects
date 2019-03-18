@@ -48,7 +48,7 @@ class PyTest(TestCommand):
 
         packages = setuptools.find_packages(where=project_root)
         include = [os.path.join(p, '*') for p in packages]
-        include.append('tests/unit/fixture*')
+        include.append('tests/fixtures/*')
 
         cov = coverage.coverage(include=include)
 
