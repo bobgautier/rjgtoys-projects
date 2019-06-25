@@ -47,10 +47,13 @@ class PyTest(TestCommand):
             os.unlink(cov_file)
 
         packages = setuptools.find_packages(where=project_root)
-        include = [os.path.join(p, '*') for p in packages]
-        include.append('tests/fixtures/*')
 
-        cov = coverage.coverage(include=include)
+        sources = list(packages)
+        fixtures = os.path.join(project_root, 'tests/fixtures')
+        if os.path.isdir(fixtures):
+            sources.append(fixtures)
+
+        cov = coverage.coverage(source=sources)
 
         cov.start()
         errno = pytest.main(self.test_args)
