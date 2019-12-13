@@ -50,6 +50,7 @@ class PyTest(TestCommand):
 
         include = [os.path.join(p, '*') for p in packages]
         include.append('tests/unit/fixture*')
+        include.append('tests/fixture*')
 
         cov = coverage.coverage(include=include)
 

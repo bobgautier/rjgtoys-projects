@@ -141,7 +141,7 @@ required-attributes=
 bad-functions=map,filter,input
 
 # Good variable names which should always be accepted, separated by a comma
-good-names=a,b,c,d,e,f,g,h,i,j,k,m,n,p,q,r,s,t,u,v,w,x,y,z,_
+good-names=a,b,bc,c,d,e,f,g,h,i,j,k,m,n,op,p,q,r,s,t,u,v,w,x,y,z,_
 
 # Bad variable names which should always be refused, separated by a comma
 bad-names=foo,bar,baz,toto,tutu,tata,l,o
@@ -166,7 +166,8 @@ variable-rgx=[a-z_][a-z0-9_]{2,30}$
 variable-name-hint=[a-z_][a-z0-9_]{2,30}$
 
 # Regular expression matching correct constant names
-const-rgx=(([A-Z_][A-Z0-9_]*)|(__.*__))$
+# Note special 'exception' for 'log'
+const-rgx=(([A-Z_][A-Z0-9_]*)|(__.*__))$|^log$
 
 # Naming hint for constant names
 const-name-hint=(([A-Z_][A-Z0-9_]*)|(__.*__))$
@@ -273,7 +274,7 @@ spelling-store-unknown-words=no
 [FORMAT]
 
 # Maximum number of characters on a single line.
-max-line-length=100
+max-line-length=120
 
 # Regexp for a line that is allowed to be longer than the limit.
 ignore-long-lines=^\s*(# )?<?https?://\S+>?$
