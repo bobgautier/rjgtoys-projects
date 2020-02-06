@@ -27,7 +27,7 @@ class PyTest(TestCommand):
 
     def finalize_options(self):
         TestCommand.finalize_options(self)
-        self.test_args = ['-s'] # preserve stdout
+        self.test_args = ['-s', 'tests'] # preserve stdout
         self.test_suite = True
 
     def run_tests(self):
@@ -48,11 +48,12 @@ class PyTest(TestCommand):
 
         packages = setuptools.find_packages(where=project_root)
 
-        include = [os.path.join(p, '*') for p in packages]
-        include.append('tests/unit/fixture*')
-        include.append('tests/fixture*')
+        sources = list(packages)
+        fixtures = os.path.join(project_root, 'tests/fixtures')
+        if os.path.isdir(fixtures):
+            sources.append(fixtures)
 
-        cov = coverage.coverage(include=include)
+        cov = coverage.coverage(source=sources)
 
         cov.start()
         errno = pytest.main(self.test_args)

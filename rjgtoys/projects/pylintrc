@@ -141,7 +141,8 @@ required-attributes=
 bad-functions=map,filter,input
 
 # Good variable names which should always be accepted, separated by a comma
-good-names=a,b,bc,c,d,e,f,g,h,i,j,k,m,n,op,p,q,r,s,t,u,v,w,x,y,z,_
+# I'm afraid I like to use t0, t1 etc for times
+good-names=a,b,bc,c,d,e,f,g,h,i,j,k,m,n,op,p,q,r,s,t,t0,t1,u,v,w,x,y,z,_
 
 # Bad variable names which should always be refused, separated by a comma
 bad-names=foo,bar,baz,toto,tutu,tata,l,o
@@ -166,8 +167,14 @@ variable-rgx=[a-z_][a-z0-9_]{2,30}$
 variable-name-hint=[a-z_][a-z0-9_]{2,30}$
 
 # Regular expression matching correct constant names
+<<<<<<< HEAD
 # Note special 'exception' for 'log'
 const-rgx=(([A-Z_][A-Z0-9_]*)|(__.*__))$|^log$
+=======
+# I allow 'log' because there's always a logger instance
+# and pylint always thinks it's a 'constant'
+const-rgx=(([A-Z_][A-Z0-9_]*)|(__.*__)|log)$
+>>>>>>> 6fc232fda0019e9efbf88cef847d0caee1d85005
 
 # Naming hint for constant names
 const-name-hint=(([A-Z_][A-Z0-9_]*)|(__.*__))$
@@ -392,4 +399,4 @@ int-import-graph=
 
 # Exceptions that will emit a warning when being caught. Defaults to
 # "Exception"
-overgeneral-exceptions=Exception
+overgeneral-exceptions=Exception,BaseException
