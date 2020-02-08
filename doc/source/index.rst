@@ -39,3 +39,10 @@ It adds a 'lint' command that runs `pylint`.
 It adds a 'jenkins' command that will create a Jenkins job to build the project.
 
 
+Getting it
+==========
+
+This package is not (yet) on PyPi.   To get the source code::
+
+    git clone https://github.com/bobgautier/rjgtoys-projects.git
+
