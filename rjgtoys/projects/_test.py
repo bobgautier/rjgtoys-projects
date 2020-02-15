@@ -42,6 +42,7 @@ class PyTest(TestCommand):
         # "setup.py"
 
         project_root = os.path.dirname(sys.modules['__main__'].__file__)
+
         cov_file = os.path.join(project_root, '.coverage')
         if os.path.exists(cov_file):
             os.unlink(cov_file)
