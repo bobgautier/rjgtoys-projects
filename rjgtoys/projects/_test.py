@@ -49,7 +49,7 @@ class PyTest(TestCommand):
 
         packages = setuptools.find_packages(where=project_root)
 
-        sources = list(packages)
+        sources = [p.replace('.','/') for p in packages]
         fixtures = os.path.join(project_root, 'tests/fixtures')
         if os.path.isdir(fixtures):
             sources.append(fixtures)

@@ -5,7 +5,7 @@ from rjgtoys.projects import setup
 setup(
     name = "rjgtoys-projects",
     version = "0.0.1",
-    author = "Bob Gautier",
+    author = "Robert J Gautier",
     author_email = "bob.gautier@gmail.com",
     description = ("Setuptools extensions to help with rjgtoys projects"),
     keywords = "setuptools",
