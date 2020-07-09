@@ -1,6 +1,15 @@
 #!/usr/bin/python3
 
-from rjgtoys.projects import setup
+# Bootstrap support: If this package can't (yet) be imported,
+# fall back to regular setuptools.
+#
+# This makes an initial 'setup.py develop --user' work.
+#
+
+try:
+    from rjgtoys.projects import setup
+except ImportError:
+    from setuptools import setup
 
 setup(
     name = "rjgtoys-projects",

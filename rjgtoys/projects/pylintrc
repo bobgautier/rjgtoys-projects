@@ -167,14 +167,9 @@ variable-rgx=[a-z_][a-z0-9_]{2,30}$
 variable-name-hint=[a-z_][a-z0-9_]{2,30}$
 
 # Regular expression matching correct constant names
-<<<<<<< HEAD
-# Note special 'exception' for 'log'
-const-rgx=(([A-Z_][A-Z0-9_]*)|(__.*__))$|^log$
-=======
 # I allow 'log' because there's always a logger instance
 # and pylint always thinks it's a 'constant'
 const-rgx=(([A-Z_][A-Z0-9_]*)|(__.*__)|log)$
->>>>>>> 6fc232fda0019e9efbf88cef847d0caee1d85005
 
 # Naming hint for constant names
 const-name-hint=(([A-Z_][A-Z0-9_]*)|(__.*__))$
