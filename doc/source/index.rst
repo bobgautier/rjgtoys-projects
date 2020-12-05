@@ -10,29 +10,37 @@ I doubt it will be of much use to anyone else.
 I'm offering a brief writeup here because you might come across it
 if you look at my other projects, so it needs an explanation.
 
-In order to be able to build other `rjgtoys` projects you'll need to get
-past the first two steps at least.
+In order to be able to build other `rjgtoys` projects you'll probably
+need to install this one first.
+
+Once you've done that, the `setup.py` from other `rjgtoys` projects should work
+more or less as you expect.
 
 Getting it
 ==========
 
-This package is not (yet) on PyPi.   To get the source code::
+Method 1: Install from PyPi
+---------------------------
+
+By the time you read this, ``rjgtoys-projects`` should be available on PyPi::
+
+    pip install --user rjgtoys-projects
+
+
+Method 2: Get the source code
+-----------------------------
+
+To get the source code::
 
     git clone https://github.com/bobgautier/rjgtoys-projects.git
 
-Making it usable
-================
-
-To make the package available for your Python::
+Then make the package available for your Python::
 
     cd rjgtoys-projects
     python ./setup.py develop --user
 
 If you are using a virtualenv, you should omit the ``--user`` option used
 in these examples.
-
-Once you've done this, the `setup.py` from other `rjgtoys` projects should work
-more or less as you expect.
 
 
 .. include:: cli.rst
