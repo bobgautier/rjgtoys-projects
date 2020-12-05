@@ -15,10 +15,7 @@ from distutils.errors import DistutilsOptionError
 import setuptools
 
 
-from pkg_resources import (normalize_path,
-                           working_set, evaluate_marker,
-                           add_activation_listener, require
-                        )
+from pkg_resources import normalize_path, working_set, evaluate_marker, add_activation_listener, require
 
 
 class LintCommand(setuptools.Command):
@@ -29,7 +26,7 @@ class LintCommand(setuptools.Command):
     user_options = [
         ('lint-rc=', None, "Path to the pylintrc file to use (default: built-in)"),
         ('lint-report=', None, "Where to write the lint report (default: ./pylint.out)"),
-        ('lint-requires', None, "List of modules needed to run pylint (default: pylint)")
+        ('lint-requires', None, "List of modules needed to run pylint (default: pylint)"),
     ]
 
     def initialize_options(self):
@@ -59,15 +56,12 @@ class LintCommand(setuptools.Command):
         """Run pylint and capture the report."""
 
         with open(self.lint_report, "w") as report:
-#            print("Lint configuration from '%s'" % (self.lint_rc))
+            #            print("Lint configuration from '%s'" % (self.lint_rc))
             print("Lint: Report will be in '%s'" % (self.lint_report))
 
             cmd = [sys.executable, "-m", "pylint", "--rcfile=%s" % (self.lint_rc), "rjgtoys"]
 
-            p = subprocess.Popen(
-                    cmd,
-                    stdout=report
-            )
+            p = subprocess.Popen(cmd, stdout=report)
             s = p.wait()
             if s == 0:
                 print("Lint: PASS")
@@ -112,8 +106,7 @@ class LintCommand(setuptools.Command):
         ir_d = dist.fetch_build_eggs(lint_requires)
         tr_d = dist.fetch_build_eggs(dist.tests_require or [])
         er_d = dist.fetch_build_eggs(
-            v for k, v in dist.extras_require.items()
-            if k.startswith(':') and evaluate_marker(k[1:])
+            v for k, v in dist.extras_require.items() if k.startswith(':') and evaluate_marker(k[1:])
         )
         return itertools.chain(ir_d, tr_d, er_d)
 
@@ -140,6 +133,8 @@ class LintCommand(setuptools.Command):
             project_path = normalize_path(ei_cmd.egg_base)
             sys.path.insert(0, project_path)
             working_set.__init__()
+            # pylint: disable=not-callable
+            # add_activation_listener is callable, but pylint thinks not
             add_activation_listener(lambda dist: dist.activate())
             require('%s==%s' % (ei_cmd.egg_name, ei_cmd.egg_version))
             with self.paths_on_pythonpath([project_path]):

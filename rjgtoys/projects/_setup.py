@@ -8,6 +8,7 @@ from rjgtoys.projects._test import PyTest, readfile
 from rjgtoys.projects._lint import LintCommand
 from rjgtoys.projects._jenkins import JenkinsCommand
 
+
 def setup(**kwargs):
     """Replacement for `setuptools.setup()`."""
 

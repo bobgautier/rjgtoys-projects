@@ -29,7 +29,7 @@ class JenkinsCommand(setuptools.Command):
         ('jenkins-template=', None, "Template for Jenkins job (default: built-in)"),
         ('jenkins-git-remote=', None, "Local remote name of repo to build (default: origin)"),
         ('jenkins-git-branch=', None, "Branch Jenkins is to build (default: master)"),
-        ('build', None, "Trigger a build now")
+        ('build', None, "Trigger a build now"),
     ]
 
     def initialize_options(self):
@@ -76,8 +76,7 @@ class JenkinsCommand(setuptools.Command):
         """Find and render a template."""
 
         env = jinja2.Environment(
-            loader=jinja2.FileSystemLoader(os.path.dirname(template)),
-            autoescape=jinja2.select_autoescape(['xml'])
+            loader=jinja2.FileSystemLoader(os.path.dirname(template)), autoescape=jinja2.select_autoescape(['xml'])
         )
 
         try:
@@ -101,13 +100,13 @@ class JenkinsCommand(setuptools.Command):
         remote = working_repo.remotes[self.jenkins_git_remote].url
         # Hack!
         if remote.startswith('/'):
-            remote = "file://"+remote
+            remote = "file://" + remote
 
         return tpl.render(
-                description=dist.get_description(),
-                name=name,
-                gitrepo=remote,
-                gitbranch=self.jenkins_git_branch,
-                upstreams=upstreams,
-                python=sys.executable
-            )
+            description=dist.get_description(),
+            name=name,
+            gitrepo=remote,
+            gitbranch=self.jenkins_git_branch,
+            upstreams=upstreams,
+            python=sys.executable,
+        )

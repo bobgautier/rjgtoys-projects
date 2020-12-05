@@ -13,7 +13,7 @@ except ImportError:
 
 setup(
     name = "rjgtoys-projects",
-    version = "0.0.1",
+    version = "0.0.2",
     author = "Robert J Gautier",
     author_email = "bob.gautier@gmail.com",
     description = ("Setuptools extensions to help with rjgtoys projects"),
@@ -27,9 +27,16 @@ setup(
         "Operating System :: OS Independent",
         ],
     install_requires = [
+        "cookiecutter>=1.7.2",
         "python-jenkins",
         "GitPython",
         "Jinja2"
     ],
+    entry_points={
+        'console_scripts': [
+            'rjgtoys-new = rjgtoys.projects.cli:main'
+        ]
+    },
+    include_package_data=True,
     python_requires='>=3.6'
 )
