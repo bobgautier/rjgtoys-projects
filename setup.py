@@ -13,7 +13,7 @@ except ImportError:
 
 setup(
     name = "rjgtoys-projects",
-    version = "0.1.0",
+    version = "0.1.1",
     author = "Robert J Gautier",
     author_email = "bob.gautier@gmail.com",
     description = ("Setuptools extensions to help with rjgtoys projects"),
